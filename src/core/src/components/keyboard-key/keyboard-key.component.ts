@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
+import { BehaviorSubject } from 'rxjs';
 import { MAT_KEYBOARD_DEADKEYS } from '../../configs/keyboard-deadkey.config';
 import { MAT_KEYBOARD_ICONS } from '../../configs/keyboard-icons.config';
 import { KeyboardClassKey } from '../../enums/keyboard-class-key.enum';
 import { IKeyboardDeadkeys } from '../../interfaces/keyboard-deadkeys.interface';
 import { IKeyboardIcons } from '../../interfaces/keyboard-icons.interface';
+
+
 
 export const VALUE_NEWLINE = '\n\r';
 export const VALUE_SPACE = ' ';
@@ -143,7 +143,7 @@ export class MatKeyboardKeyComponent implements OnInit {
 
   // Inject dependencies
   constructor(@Inject(MAT_KEYBOARD_DEADKEYS) private _deadkeys: IKeyboardDeadkeys,
-              @Inject(MAT_KEYBOARD_ICONS) private _icons: IKeyboardIcons) {}
+    @Inject(MAT_KEYBOARD_ICONS) private _icons: IKeyboardIcons) { }
 
   ngOnInit() {
     // read the deadkeys
