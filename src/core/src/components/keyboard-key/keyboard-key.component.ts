@@ -233,6 +233,13 @@ export class MatKeyboardKeyComponent implements OnInit {
       this.inputValue = [value.slice(0, caretStart), char, value.slice(caretStart)].join('');
       this._setCursorPosition(caretStart + 1);
     }
+
+    // Dispatch Input Event for Angular to register a change
+    if (this.input && this.input.nativeElement) {
+      setTimeout(() => {
+        this.input.nativeElement.dispatchEvent(new Event('input',{ bubbles: true }));
+      });
+    }
   }
 
   private deleteSelectedText(caretStart: number, caretEnd: number, value: string): void {
